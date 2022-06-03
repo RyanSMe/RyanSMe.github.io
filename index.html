@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Site</title>
+  <title>My Portfolio</title>
 <style>
 body {
   font-family: "Lato", sans-serif;
@@ -79,7 +79,7 @@ body {background-color: #222725;}
 
 <div id="main">
 	<div id="topnav">
-		<span style="font-size:30px;cursor:pointer" id="demo" onclick="openNav()"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Photoshop_CC_icon.png/615px-Photoshop_CC_icon.png"></span>
+		<span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/300px-Hamburger_icon.svg.png" id="demo" onhover="mouseOver()"></span>
 	</div>
   	<h2>My Portfolio</h2>
   	<p>yuh yuh</p>
@@ -88,16 +88,25 @@ body {background-color: #222725;}
 <script>
 document.getElementById("demo").onmouseover = function() {mouseOver()};
 var my_array = ["https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Photoshop_CC_icon.png/615px-Photoshop_CC_icon.png", "http://fountaindale.libnet.info/images/events/fountaindale/S300_Adobe_Illustrator.png"]
+var active = "menu_initial";
+var menu_status = "closed";
+// spagheet lmao
 function mouseOver() {
-  console.log("activated the function")
-  document.getElementById("demo").src = my_array[Math.floor(Math.random() * my_array.length)];
-}
-
-function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-  document.getElementById("main").style.marginLeft = "250px";
-  document.body.style.backgroundColor = "rgba(221,240,255,0.4)";
-  document.body.style.color="#080F0F";
+  if (active == "menu_initial") {
+    active = "menu";
+  }
+  else if (active == "menu") {
+    document.getElementById("demo").src = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Photoshop_CC_icon.png/615px-Photoshop_CC_icon.png";
+    active = "photoshop"
+  } else {
+    if (active == "photoshop") {
+      document.getElementById("demo").src = "http://fountaindale.libnet.info/images/events/fountaindale/S300_Adobe_Illustrator.png";
+      active = "not_photoshop";
+    } else {
+      document.getElementById("demo").src = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Photoshop_CC_icon.png/615px-Photoshop_CC_icon.png";
+      active = "photoshop";
+    }
+  } 
 }
 
 function closeNav() {
@@ -105,6 +114,18 @@ function closeNav() {
   document.getElementById("main").style.marginLeft= "0";
   document.body.style.backgroundColor = "#222725";
   document.body.style.color="#E0E0CE";
+}
+
+function openNav() {
+  if (menu_status = "closed") {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+    document.body.style.backgroundColor = "rgba(221,240,255,0.4)";
+    document.body.style.color="#080F0F";
+    menu_status = "open";
+  } else {
+    closeNav();
+  }
 }
 </script>
    
