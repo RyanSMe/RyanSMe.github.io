@@ -52,6 +52,11 @@ body {background-color: #222725;}
   padding: 16px;
 }
 
+#gallery {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
@@ -123,6 +128,7 @@ function mouseOver() {
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
   document.getElementById("main").style.marginLeft= "0";
+  document.getElementById("gallery").style.marginLeft = "0";
   document.body.style.backgroundColor = "#222725";
   document.body.style.color="#E0E0CE";
 }
@@ -131,6 +137,7 @@ function openNav() {
   if (menu_status = "closed") {
     document.getElementById("mySidenav").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";
+    document.getElementById("gallery").style.marginLeft = "250px";
     document.body.style.backgroundColor = "rgba(221,240,255,0.4)";
     document.body.style.color="#080F0F";
     menu_status = "open";
